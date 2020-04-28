@@ -1,13 +1,11 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import { StyleSheet, View } from "react-native";
 import { Context as AuthContext } from "../context/AuthContext";
 import AuthForm from "../components/AuthForm";
 import NavLink from "../components/NavLink";
 
 const SignupScreen = ({ navigation }) => {
-  const { state, signup, clearErrorMessage, tryLocalSignin } = useContext(
-    AuthContext
-  );
+  const { state, signup, clearErrorMessage } = useContext(AuthContext);
   const { errorMessage } = state;
 
   useEffect(() => {
@@ -20,10 +18,6 @@ const SignupScreen = ({ navigation }) => {
       listener.remove;
     };
   }, [navigation]);
-
-  useEffect(() => {
-    tryLocalSignin();
-  }, []);
 
   return (
     <View style={styles.container}>
