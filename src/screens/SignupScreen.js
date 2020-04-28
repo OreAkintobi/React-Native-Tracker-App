@@ -5,7 +5,7 @@ import Spacer from "../components/Spacer";
 
 const SignupScreen = ({ navigation }) => {
   return (
-    <View>
+    <View style={styles.container}>
       <Spacer>
         <Text h3>Sign Up for Tracker</Text>
       </Spacer>
@@ -21,9 +21,10 @@ const SignupScreen = ({ navigation }) => {
 };
 
 const styles = StyleSheet.create({
-  text: {
-    fontSize: 48,
-    textAlign: "center",
+  container: {
+    flex: 1,
+    justifyContent: "center",
+    marginBottom: 200,
   },
 });
 
