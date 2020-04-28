@@ -5,7 +5,9 @@ import AuthForm from "../components/AuthForm";
 import NavLink from "../components/NavLink";
 
 const SignupScreen = ({ navigation }) => {
-  const { state, signup, clearErrorMessage } = useContext(AuthContext);
+  const { state, signup, clearErrorMessage, tryLocalSignin } = useContext(
+    AuthContext
+  );
   const { errorMessage } = state;
 
   useEffect(() => {
@@ -18,6 +20,10 @@ const SignupScreen = ({ navigation }) => {
       listener.remove;
     };
   }, [navigation]);
+
+  useEffect(() => {
+    tryLocalSignin();
+  }, []);
 
   return (
     <View style={styles.container}>
