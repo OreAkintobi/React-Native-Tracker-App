@@ -7,13 +7,13 @@ const Map = () => {
   for (let i = 0; i < 20; i++) {
     if (i % 2 === 0) {
       points.push({
-        latitude: 6.43845 + i * 0.001,
-        longitude: 3.524577 + i * 0.001,
+        latitude: 6.446787 + i * 0.001,
+        longitude: 3.574914 + i * 0.001,
       });
     } else {
       points.push({
-        latitude: 6.43845 - i * 0.0000001,
-        longitude: 3.524577 + i * 0.001,
+        latitude: 6.446787 - i * 0.0000001,
+        longitude: 3.574914 + i * 0.001,
       });
     }
   }
@@ -23,8 +23,8 @@ const Map = () => {
       style={styles.map}
       provider="google"
       region={{
-        latitude: 6.43845,
-        longitude: 3.524577,
+        latitude: 6.446787,
+        longitude: 3.574914,
         latitudeDelta: 0.01,
         longitudeDelta: 0.01,
       }}
