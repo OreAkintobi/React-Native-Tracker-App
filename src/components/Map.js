@@ -1,35 +1,33 @@
-import React from "react";
-import { StyleSheet, Text } from "react-native";
+import React, { useContext } from "react";
+import { StyleSheet, Text, ActivityIndicator } from "react-native";
 import MapView, { Polyline } from "react-native-maps";
+import { Context as LocationContext } from "../context/LocationContext";
 
 const Map = () => {
-  let points = [];
-  for (let i = 0; i < 20; i++) {
-    if (i % 2 === 0) {
-      points.push({
-        latitude: 6.446787 + i * 0.001,
-        longitude: 3.574914 + i * 0.001,
-      });
-    } else {
-      points.push({
-        latitude: 6.446787 - i * 0.0000001,
-        longitude: 3.574914 + i * 0.001,
-      });
-    }
+  const {
+    state: { currentLocation },
+  } = useContext(LocationContext);
+
+  if (!currentLocation) {
+    return <ActivityIndicator size="large" style={{ marginTop: 200 }} />;
   }
 
   return (
     <MapView
       style={styles.map}
       provider="google"
+      initialRegion={{
+        ...currentLocation.coords,
+        latitudeDelta: 0.01,
+        longitudeDelta: 0.01,
+      }}
       region={{
-        latitude: 6.446787,
-        longitude: 3.574914,
+        ...currentLocation.coords,
         latitudeDelta: 0.01,
         longitudeDelta: 0.01,
       }}
     >
-      <Polyline coordinates={points} />
+      {/* <Polyline coordinates={points} /> */}
     </MapView>
   );
 };
