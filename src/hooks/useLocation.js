@@ -30,7 +30,6 @@ export default (shouldTrack, callback) => {
     if (shouldTrack) {
       startWatching();
     } else {
-      //stop watching
       subscriber.remove();
       setSubscriber(null);
     }
